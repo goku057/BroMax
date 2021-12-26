@@ -2,12 +2,72 @@
 #include "include/cRender.h"
 #include "include/CameraInfo.h"
 #include "include/Shapes.h"
+#include "include/Obstacles.h"
+#include <stdlib.h>
+#include <iostream>
 
 
+#define MAX_ENEMY 1000
 //global variables declaring
-int playerSpeed = 7;
+int playerSpeed = 17;
 int cx = 0;
 int cy = 0;
+int ex = 0;
+int ey = 0;
+
+
+typedef struct PlayerHitbox{
+    int top, bottom, left, right;
+}PlayerHitbox;
+
+PlayerHitbox playerHitbox = {90, 200, 50, 50};
+//playerHitbox.top = 90, playerHitbox.bottom = 200, playerHitbox.left = 50, playerHitbox.right = 50;
+
+Obstacles obs[MAX_ENEMY];
+int randomColor[MAX_ENEMY];
+int randomY[MAX_ENEMY];
+typedef struct Color{
+    int r, g, b;
+}Color;
+
+
+
+Color color[] = {{1, 0.5, 0.5}, {0, 0, 1}, {0, 1, 0}, {0, 1, 1}, {1, 0, 0}, {1, 0, 1}, {1, 1, 0}, {0, 0, 1} };
+int enemyY[] = {1000, 750, 500, 250, 0, -500, -750, -500, -250};
+
+void player(int x, int y){
+    Shapes shapes;
+    glPushMatrix();
+        //glScaled(0.5, 0.5, 1);
+        glTranslated(cx, cy, 0);
+        int radius = 45;
+        shapes.circle(x, y + 40, radius, 50, 1, 0, 0);
+        int side = 100;
+        int width = 50;
+        int height = 200;
+        shapes.square(x - (side / 2), y - side, side, 0.980, 0.972, 0.2);
+        shapes.rectangle(x - (width / 2), y - height, height, width, 0.980, 0.972, 0.2);
+    glPopMatrix();
+}
+
+
+void gameEnd(){
+    std::cout << "Game OVER\n";
+}
+
+
+bool checkHit(int x, int y){
+
+    if (cx + playerHitbox.right >= x){
+        return true;
+    }
+    else if(cy + playerHitbox.bottom <= y){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 void display(){
     CameraInfo ci;
@@ -25,23 +85,46 @@ void display(){
         glVertex2f(0, 10000);
     glEnd();
 
+    player(-1000, 0);
 
     glPushMatrix();
-        glScaled(0.5, 0.5, 1);
-        glTranslated(cx, cy, 0);
-        shapes.circle(cx, cy + 65, 80.0, 50, 1, 0, 0);
-        int side = 200;
-        int width = 100;
-        int height = 400;
-        shapes.square(cx - (side / 2), cy - side, side, 0.980, 0.972, 0.2);
-        shapes.rectangle(cx - (width / 2), cy - height, height, width, 0.980, 0.972, 0.2);
+        glTranslated(ex, ey, 0);
+        for (int i = 1000, intervalX = 750, intervalY = 1000; i > 0; i--, intervalX += 750, intervalY -= 250){
+//            if(checkHit(intervalX + ex, intervalY) == true){
+//                glutDisplayFunc(gameEnd);
+//            }
+            if(i % 8 == 0){
+                //intervalX = 500;
+                intervalX -= 750;
+                //intervalY = 1000;
+            }
+            int c = randomColor[i];
+            intervalY = randomY[i];
+            if ( c == 2){
+                Obstacles ob(intervalX, intervalY, true, color[c].r, color[c].g, color[c].b);
+            }
+            else{
+                Obstacles ob(intervalX, intervalY, false, color[c].r, color[c].g, color[c].b);
+            }
+
+        }
+
     glPopMatrix();
+
     glutPostRedisplay();
     glutSwapBuffers();
 }
 
 void animate(){
+
     glutPostRedisplay();
+}
+
+void timer(int x){
+    ex -= playerSpeed;
+    glutPostRedisplay();
+    glutTimerFunc(1000/60, timer, 0);
+
 }
 
 void myKeyboard(unsigned char key, int x, int y){
@@ -55,6 +138,7 @@ void mySpecial(int key, int x, int y){
         if( cy < ORTHO_TOP - side){
             cy += playerSpeed;
         }
+        std::cout << "up presses " << rand() % 8;
     }
     else if(key == GLUT_KEY_DOWN){
         if( cy > ORTHO_BOTTOM + side){
@@ -76,16 +160,28 @@ void mySpecial(int key, int x, int y){
 void myMouse(int key, int state, int x, int y){
 }
 
+void myMenu(int i){
+    glutGetMenu();
+}
+
 int main(int argc, char** argv){
     glutInit( &argc, argv);
     Init init;
     init.init();
 
+    for(int i = 0; i < MAX_ENEMY; i ++){
+         randomColor[i] = rand() % 8;
+         randomY[i] = enemyY[rand() % 8];
+    }
+
     glutDisplayFunc(display);
     glutKeyboardFunc(myKeyboard);
     glutSpecialFunc(mySpecial);
     glutMouseFunc(myMouse);
+    glutTimerFunc(0, timer, 0);
     glutIdleFunc(animate);
+
+    glutCreateMenu(myMenu);
     glutMainLoop();
 
 }

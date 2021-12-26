@@ -28,7 +28,7 @@ void Shapes::circle(int x, int y, double radius, int segments, float r, float g,
         points[i].x = radius*cos(((double)i/(double)segments)*2*pi) + x;
 //        std :: cout << "The i = " << i << " The value of point.x is " << points[i].x << "\n";
         points[i].y = radius*sin(((double)i/(double)segments)*2*pi) + y;
-        std :: cout << "The i = " << i << " (x, y) =  (" << points[i].x << ", " << points[i].y << ")" "\n";
+//        std :: cout << "The i = " << i << " (x, y) =  (" << points[i].x << ", " << points[i].y << ")" "\n";
     }
     //draw segments using generated points
     glBegin(GL_POLYGON);

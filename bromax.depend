@@ -1,9 +1,12 @@
 # depslib dependency file v1.0
-1640455356 source:h:\glut projects\bromax\main.cpp
-	"Init.h"
-	"cRender.h"
-	"CameraInfo.h"
-	"Shapes.h"
+1640543975 source:h:\glut projects\bromax\main.cpp
+	"include/Init.h"
+	"include/cRender.h"
+	"include/CameraInfo.h"
+	"include/Shapes.h"
+	"include/Obstacles.h"
+	<stdlib.h>
+	<iostream>
 
 976692172 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
 	<windows.h>
@@ -220,17 +223,17 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1640352379 source:h:\glut projects\bromax\src\test.cpp
-	"Test.h"
+1640523113 source:h:\glut projects\bromax\src\test.cpp
+	"../include/Test.h"
 
 1640352378 h:\glut projects\bromax\include\test.h
 
-1640354583 h:\glut projects\bromax\include\init.h
+1640522649 h:\glut projects\bromax\include\init.h
 	"AllHeaders.h"
 
-1640420066 source:h:\glut projects\bromax\src\init.cpp
-	"Init.h"
-	"Constants.h"
+1640522649 source:h:\glut projects\bromax\src\init.cpp
+	"../include/Init.h"
+	"../include/Constants.h"
 
 1640454137 h:\glut projects\bromax\include\allheaders.h
 	<windows.h>
@@ -238,33 +241,33 @@
 	<GL/glut.h>
 	<math.h>
 
-1640354537 source:h:\glut projects\bromax\src\allheaders.cpp
-	"AllHeaders.h"
+1640523080 source:h:\glut projects\bromax\src\allheaders.cpp
+	"../include/AllHeaders.h"
 
-1640448913 source:h:\glut projects\bromax\src\crender.cpp
-	"cRender.h"
-	"AllHeaders.h"
+1640532238 source:h:\glut projects\bromax\src\crender.cpp
+	"../include/cRender.h"
+	"../include/AllHeaders.h"
 
 1640448976 h:\glut projects\bromax\include\crender.h
 
-1640403122 source:h:\glut projects\bromax\src\constants.cpp
-	"Constants.h"
+1640522746 source:h:\glut projects\bromax\src\constants.cpp
+	"../include/Constants.h"
 
 1640403284 h:\glut projects\bromax\include\constants.h
 
-1640455412 source:h:\glut projects\bromax\src\camerainfo.cpp
-	"CameraInfo.h"
+1640523113 source:h:\glut projects\bromax\src\camerainfo.cpp
+	"../include/CameraInfo.h"
 
 1640448980 h:\glut projects\bromax\include\camerainfo.h
 
-1640454786 h:\glut projects\bromax\include\shapes.h
+1640522649 h:\glut projects\bromax\include\shapes.h
 
 1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
 	<_mingw.h>
 
-1640455433 source:h:\glut projects\bromax\src\shapes.cpp
-	"Shapes.h"
-	"AllHeaders.h"
+1640537728 source:h:\glut projects\bromax\src\shapes.cpp
+	"../include/Shapes.h"
+	"../include/AllHeaders.h"
 	<bits/stdc++.h>
 
 1640501476 source:c:\glut project\bromax\main.cpp
@@ -314,4 +317,10 @@
 1640501274 c:\glut project\bromax\include\shapes.h
 
 1640497046 c:\glut project\bromax\include\constants.h
+
+1640535973 h:\glut projects\bromax\include\obstacles.h
+	"Shapes.h"
+
+1640536004 source:h:\glut projects\bromax\src\obstacles.cpp
+	"../include/Obstacles.h"
 

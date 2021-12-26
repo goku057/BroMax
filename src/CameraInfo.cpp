@@ -1,4 +1,4 @@
-#include "CameraInfo.h"
+#include "../include/CameraInfo.h"
 
 CameraInfo::CameraInfo()
 {
