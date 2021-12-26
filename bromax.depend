@@ -267,3 +267,51 @@
 	"AllHeaders.h"
 	<bits/stdc++.h>
 
+1640501476 source:c:\glut project\bromax\main.cpp
+	"include/Init.h"
+	"include/cRender.h"
+	"include/CameraInfo.h"
+	"include/Shapes.h"
+
+1640500844 source:c:\glut project\bromax\src\init.cpp
+	"../include/Init.h"
+	"../include/Constants.h"
+
+1640497046 source:c:\glut project\bromax\src\allheaders.cpp
+	"AllHeaders.h"
+
+1640497046 source:c:\glut project\bromax\src\camerainfo.cpp
+	"CameraInfo.h"
+
+1640497046 source:c:\glut project\bromax\src\constants.cpp
+	"Constants.h"
+
+1640497046 source:c:\glut project\bromax\src\crender.cpp
+	"cRender.h"
+	"AllHeaders.h"
+
+1640501323 source:c:\glut project\bromax\src\shapes.cpp
+	"../include/Shapes.h"
+	"../include/AllHeaders.h"
+	<bits/stdc++.h>
+
+1640497046 source:c:\glut project\bromax\src\test.cpp
+	"Test.h"
+
+1640500844 c:\glut project\bromax\include\init.h
+	"AllHeaders.h"
+
+1640497046 c:\glut project\bromax\include\allheaders.h
+	<windows.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<math.h>
+
+1640497046 c:\glut project\bromax\include\crender.h
+
+1640497046 c:\glut project\bromax\include\camerainfo.h
+
+1640501274 c:\glut project\bromax\include\shapes.h
+
+1640497046 c:\glut project\bromax\include\constants.h
+

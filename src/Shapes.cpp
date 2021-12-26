@@ -1,5 +1,5 @@
-#include "Shapes.h"
-#include "AllHeaders.h"
+#include "../include/Shapes.h"
+#include "../include/AllHeaders.h"
 #include <bits/stdc++.h>
 #define pi (2*acos(0.0))
 
@@ -18,10 +18,10 @@ Shapes::~Shapes()
     //dtor
 }
 
-void Shapes::circle(int x, int y, double radius, int segments){
+void Shapes::circle(int x, int y, double radius, int segments, float r, float g, float b){
     int i;
     struct point points[100];
-    glColor3f(1,0.7,0.7);
+    glColor3f(r, g, b);
     //generate points
     for(i=0;i<=segments;i++)
     {
@@ -37,5 +37,27 @@ void Shapes::circle(int x, int y, double radius, int segments){
         glVertex3f(points[i].x,points[i].y,0);
 //        glVertex3f(points[i+1].x,points[i+1].y,0);
     }
+    glEnd();
+}
+
+void Shapes::square(int x, int y, int side, float r, float g, float b){
+
+    glBegin(GL_QUADS);
+        glColor3f(r, g, b);
+        glVertex3d(x, y, 0);
+        glVertex3d(x + side, y, 0);
+        glVertex3d(x + side, y + side, 0);
+        glVertex3d(x, y + side, 0);
+    glEnd();
+}
+
+void Shapes::rectangle(int x, int y, int height, int width, float r, float g, float b){
+
+    glBegin(GL_QUADS);
+        glColor3f(r, g, b);
+        glVertex3d(x, y, 0);
+        glVertex3d(x + width, y, 0);
+        glVertex3d(x + width, y + height, 0);
+        glVertex3d(x, y + height, 0);
     glEnd();
 }

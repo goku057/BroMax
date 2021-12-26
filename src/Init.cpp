@@ -1,5 +1,7 @@
-#include "Init.h"
-#include "Constants.h"
+#include "../include/Init.h"
+#include "../include/Constants.h"
+
+
 
 Init::Init()
 {
@@ -23,7 +25,7 @@ void Init::init(){
     glClearColor(0, 0, 0, 0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-1000, 1000, -1000, 1000, -1000, 10000);
+    glOrtho(ORTHO_LEFT, ORTHO_RIGHT, ORTHO_BOTTOM, ORTHO_TOP, ORTHO_NEAR, ORTHO_FAR);
 //    gluPerspective(80, 1, 1, 5700);
     glEnable(GL_DEPTH_TEST);
 
