@@ -14,7 +14,17 @@ int cx = 0;
 int cy = 0;
 int ex = 0;
 int ey = 0;
+int playerInitPositionX = 0;
+int playerInitPositionY = 0;
 
+
+
+typedef struct PlayerPosition{
+    int x, y;
+}PlayerPosition;
+
+PlayerPosition playerInitPosition = {0, 0};
+PlayerPosition playerCurrentPosition = {0, 0};
 
 typedef struct PlayerHitbox{
     int top, bottom, left, right;
@@ -39,6 +49,10 @@ void player(int x, int y){
     Shapes shapes;
     glPushMatrix();
         //glScaled(0.5, 0.5, 1);
+        playerInitPosition.x = x;
+        playerInitPosition.y = y;
+        playerCurrentPosition.x = x;
+        playerCurrentPosition.y = y;
         glTranslated(cx, cy, 0);
         int radius = 45;
         shapes.circle(x, y + 40, radius, 50, 1, 0, 0);
@@ -85,7 +99,7 @@ void display(){
         glVertex2f(0, 10000);
     glEnd();
 
-    player(-1000, 0);
+    player(0, 0);
 
     glPushMatrix();
         glTranslated(ex, ey, 0);
@@ -135,24 +149,38 @@ void myKeyboard(unsigned char key, int x, int y){
 void mySpecial(int key, int x, int y){
     int side = 50;
     if (key == GLUT_KEY_UP){
-        if( cy < ORTHO_TOP - side){
+        if( cy < ORTHO_TOP - side - playerInitPosition.y){
             cy += playerSpeed;
+            playerCurrentPosition.y = playerCurrentPosition.y + cy;
+//            playerCurrentPosition.y = y;
+//            std::cout << x << ", " << y << std::endl;
+            std::cout << "Player current position (x, y) = (" << playerCurrentPosition.x << ", " << playerCurrentPosition.y << ")\n";
         }
-        std::cout << "up presses " << rand() % 8;
+
     }
     else if(key == GLUT_KEY_DOWN){
-        if( cy > ORTHO_BOTTOM + side){
+        if( cy > ORTHO_BOTTOM + side - playerInitPosition.y){
             cy -= playerSpeed;
+            playerCurrentPosition.y = playerCurrentPosition.y + cy;
+            //playerCurrentPosition.x = playerCurrentPosition.y + cx;
+//            playerCurrentPosition.y = y;
+            std::cout << "Player current position (x, y) = (" << playerCurrentPosition.x << ", " << playerCurrentPosition.y << ")\n";
         }
     }
     else if(key == GLUT_KEY_LEFT){
-        if( cx > ORTHO_LEFT  + side){
+        if( cx > ORTHO_LEFT  + side - playerInitPosition.x){
             cx -= playerSpeed;
+            playerCurrentPosition.x = playerCurrentPosition.x + cx;
+//            playerCurrentPosition.x = x;
+            std::cout << "Player current position (x, y) = (" << playerCurrentPosition.x << ", " << playerCurrentPosition.y << ")\n";
         }
     }
     else if(key == GLUT_KEY_RIGHT ){
-        if( cx < ORTHO_RIGHT - side){
+        if( cx < ORTHO_RIGHT - side - playerInitPosition.x){
             cx += playerSpeed;
+            playerCurrentPosition.x = playerCurrentPosition.x + cx;
+//            playerCurrentPosition.x = x;
+            std::cout << "Player current position (x, y) = (" << playerCurrentPosition.x << ", " << playerCurrentPosition.y << ")\n";
         }
     }
 }

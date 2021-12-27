@@ -270,36 +270,39 @@
 	"../include/AllHeaders.h"
 	<bits/stdc++.h>
 
-1640501476 source:c:\glut project\bromax\main.cpp
+1640584560 source:c:\glut project\bromax\main.cpp
 	"include/Init.h"
 	"include/cRender.h"
 	"include/CameraInfo.h"
 	"include/Shapes.h"
+	"include/Obstacles.h"
+	<stdlib.h>
+	<iostream>
 
 1640500844 source:c:\glut project\bromax\src\init.cpp
 	"../include/Init.h"
 	"../include/Constants.h"
 
-1640497046 source:c:\glut project\bromax\src\allheaders.cpp
-	"AllHeaders.h"
+1640580836 source:c:\glut project\bromax\src\allheaders.cpp
+	"../include/AllHeaders.h"
 
-1640497046 source:c:\glut project\bromax\src\camerainfo.cpp
-	"CameraInfo.h"
+1640580836 source:c:\glut project\bromax\src\camerainfo.cpp
+	"../include/CameraInfo.h"
 
-1640497046 source:c:\glut project\bromax\src\constants.cpp
-	"Constants.h"
+1640580836 source:c:\glut project\bromax\src\constants.cpp
+	"../include/Constants.h"
 
-1640497046 source:c:\glut project\bromax\src\crender.cpp
-	"cRender.h"
-	"AllHeaders.h"
+1640580836 source:c:\glut project\bromax\src\crender.cpp
+	"../include/cRender.h"
+	"../include/AllHeaders.h"
 
-1640501323 source:c:\glut project\bromax\src\shapes.cpp
+1640580836 source:c:\glut project\bromax\src\shapes.cpp
 	"../include/Shapes.h"
 	"../include/AllHeaders.h"
 	<bits/stdc++.h>
 
-1640497046 source:c:\glut project\bromax\src\test.cpp
-	"Test.h"
+1640580836 source:c:\glut project\bromax\src\test.cpp
+	"../include/Test.h"
 
 1640500844 c:\glut project\bromax\include\init.h
 	"AllHeaders.h"
@@ -323,4 +326,12 @@
 
 1640536004 source:h:\glut projects\bromax\src\obstacles.cpp
 	"../include/Obstacles.h"
+
+1640580836 c:\glut project\bromax\include\obstacles.h
+	"Shapes.h"
+
+1640580836 source:c:\glut project\bromax\src\obstacles.cpp
+	"../include/Obstacles.h"
+
+1640497046 c:\glut project\bromax\include\test.h
 
